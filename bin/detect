@@ -1,4 +1,11 @@
 #!/bin/sh
 
 
-exit 0
+# Check if the Backend directory exists in the root
+if [ -d "$1/Backend" ]; then
+    echo "Backend Copy Buildpack: Detected Backend directory"
+    exit 0
+else
+    echo "Backend Copy Buildpack: Backend directory not found"
+    exit 1
+fi
