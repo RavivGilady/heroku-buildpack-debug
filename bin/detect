@@ -1,5 +1,5 @@
 #!/bin/sh
 
 
-echo "Raviv buildpack"
+echo "Raviv 2 buildpack"
 exit 0
