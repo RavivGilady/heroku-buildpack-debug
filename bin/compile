@@ -1,7 +1,30 @@
 #!/bin/sh
 BUILD_DIR=$1
-echo "-----> Copying files from Backend to build directory"
-rm -rf "$BUILD_DIR"/*
-cp -r "$BUILD_DIR/Backend" "$BUILD_DIR"
-echo "-----> Build process complete"
+TEMP_DIR=$(mktemp -d)
 
+echo "-----> Starting build process"
+
+# Check if Backend directory is inside the build directory
+if [ -d "$BUILD_DIR/Backend" ]; then
+    echo "-----> Backend directory found in build directory"
+
+    # Copy contents from Backend to temporary directory
+    cp -r "$BUILD_DIR/Backend" "$TEMP_DIR"
+    
+    # Clean up the build directory
+    echo "-----> Cleaning build directory"
+    rm -rf "$BUILD_DIR"/*
+
+    # Copy contents from temporary directory back to build directory root
+    echo "-----> Copying Backend contents to build directory"
+    cp -r "$TEMP_DIR/Backend/"* "$BUILD_DIR"
+
+    # Remove the temporary directory
+    echo "-----> Cleaning up temporary directory"
+    rm -rf "$TEMP_DIR"
+else
+    echo "-----> Error: Backend directory not found in build directory"
+    exit 1
+fi
+
+echo "-----> Build process complete"
