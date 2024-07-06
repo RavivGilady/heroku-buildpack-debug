@@ -49,5 +49,4 @@ df -h
 echo "----> Memory Usage:"
 free -h
 
-fi
 exit 0
