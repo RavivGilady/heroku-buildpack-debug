@@ -1,5 +1,4 @@
 #!/bin/sh
 
-env | sort
 
-exit 1
+exit 0
