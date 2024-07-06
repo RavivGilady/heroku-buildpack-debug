@@ -1,52 +1,5 @@
 #!/bin/sh
 
-# Debugging information
-echo "----> Running custom detect script"
-
-# Print environment variables
-echo "----> Environment Variables:"
 env | sort
 
-# Print current directory
-echo "----> Current Directory:"
-pwd
-
-# List all files in the current directory
-echo "----> Files in Current Directory:"
-ls -la
-
-# Check if specific files or directories exist
-echo "----> Checking for specific files or directories:"
-if [ -f package.json ]; then
-  echo "Found package.json"
-else
-  echo "package.json not found"
-fi
-
-if [ -f requirements.txt ]; then
-  echo "Found requirements.txt"
-else
-  echo "requirements.txt not found"
-fi
-
-if [ -f Gemfile ]; then
-  echo "Found Gemfile"
-else
-  echo "Gemfile not found"
-fi
-
-if [ -d .git ]; then
-  echo "Found .git directory"
-else
-  echo ".git directory not found"
-fi
-
-# Check disk usage
-echo "----> Disk Usage:"
-df -h
-
-# Check memory usage
-echo "----> Memory Usage:"
-free -h
-
-exit 0
+exit 1
